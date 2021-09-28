@@ -1,6 +1,6 @@
 # Update Akash Deploy
 
-Sets up the Akash CLI for Github Action use. Installs the latest Akash CLI, Imports Keys, and deployment Certificates.
+Updates an existing deployment on Akash, using the DSEQ and `deploy.yml` file that is specified.
 
 ## Inputs
 
