@@ -1,0 +1,31 @@
+# action.yml
+name: "Akash on Github Actions Update Deploy"
+description: "Update a deployment on Akash with a deploy.yml"
+inputs:
+  AKASH_DSEQ: # id of input
+    description: "deployment sequence id"
+    required: true
+  AKASH_PROVIDER: # id of input
+    description: "provider address to send update to"
+    required: true
+  SDL_PATH: # id of input
+    description: "sdl file to target for deployment"
+    required: false
+    default: "deploy.yml"
+runs:
+  using: "composite"
+  steps:
+    - name: import key
+      shell: bash
+      env:
+        AKASH_HOME: /home/runner/.akash
+      run: |-
+        unset AKASH_GAS
+        akash tx deployment update ${{inputs.SDL_PATH}} --dseq ${{inputs.AKASH_DSEQ}} --from AKASH_GITHUB_RUNNER--keyring-backend test --node http://135.181.181.120:28957 -y
+    - name: Sleep before sending update
+      shell: bash
+      run: sleep 15s
+    - name: send update deployment
+      shell: bash
+      run: |-
+        akash provider send-manifest ${{inputs.SDL_PATH}} --node http://135.181.181.120:28957 --from AKASH_GITHUB_RUNNER --provider ${{inputs.AKASH_PROVIDER}} --dseq ${{inputs.AKASH_DSEQ}}
