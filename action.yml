@@ -27,5 +27,7 @@ runs:
       run: sleep 15s
     - name: send update deployment
       shell: bash
+      env:
+        AKASH_HOME: /home/runner/.akash
       run: |-
         akash provider send-manifest ${{inputs.SDL_PATH}} --node http://135.181.181.120:28957 --from AKASH_GITHUB_RUNNER --provider ${{inputs.AKASH_PROVIDER}} --dseq ${{inputs.AKASH_DSEQ}}
