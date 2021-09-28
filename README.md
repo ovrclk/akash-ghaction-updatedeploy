@@ -4,30 +4,25 @@ Sets up the Akash CLI for Github Action use. Installs the latest Akash CLI, Impo
 
 ## Inputs
 
-### `GITHUB_TOKEN`
+### `AKASH_DSEQ`
 
-**Required** The github runner token
+**Required** akash deployment sequence
 
-### `AKASH_WALLET_KEY`
+### `AKASH_PROVIDER`
 
-**Required** The pem text of the akash wallet key
+**Required** the provider address to target
 
-### `AKASH_WALLET_KEY_PASSWORD`
+### `SDL_PATH`
 
-**Required** The password encrypting the wallet key pem
-
-### `AKASH_DEPLOY_CERTIFICATE`
-
-**Required** The deploy certificate pem text
+**Optional** The path of the SDL file to send to the provider
 
 ## Example usage
 
 ```yaml
-- name: Akash on Github Actions Setup
-  uses: ovrclk/akash-ghaction-setup
+- name: Akash on Github Actions Update Deploy
+  uses: ovrclk/akash-ghaction-updatedeploy
   with:
-    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    AKASH_WALLET_KEY: ${{secrets.AKASH_WALLET_KEY}}
-    AKASH_WALLET_KEY_PASSWORD: ${{secrets.AKASH_WALLET_KEY_PASSWORD}}
-    AKASH_DEPLOY_CERTIFICATE: ${{secrets.AKASH_DEPLOY_CERTIFICATE}}
+    AKASH_DSEQ: 12345
+    AKASH_PROVIDER: akash1234
+    SDL_PATH: deploy.yml
 ```
