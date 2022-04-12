@@ -11,7 +11,7 @@ inputs:
   SDL_PATH: # id of input
     description: "sdl file to target for deployment"
     required: false
-    default: "deploy.yml"
+    default: "deploy.yaml"
   AKASH_NODE: # id of input
     description: "rpc node to use for commands"
     required: false
