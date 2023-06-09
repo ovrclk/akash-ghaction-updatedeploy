@@ -34,4 +34,4 @@ runs:
       env:
         AKASH_HOME: /home/runner/.akash
       run: |-
-        provider-services send-manifest ${{inputs.SDL_PATH}} --node ${{inputs.AKASH_NODE}} --from AKASH_GITHUB_RUNNER --provider ${{inputs.AKASH_PROVIDER}} --dseq ${{inputs.AKASH_DSEQ}}
+        provider-services send-manifest ${{inputs.SDL_PATH}} --node ${{inputs.AKASH_NODE}} --from AKASH_GITHUB_RUNNER --keyring-backend test --provider ${{inputs.AKASH_PROVIDER}} --dseq ${{inputs.AKASH_DSEQ}}
