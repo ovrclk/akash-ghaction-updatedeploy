@@ -25,7 +25,7 @@ runs:
         AKASH_HOME: /home/runner/.akash
       run: |-
         unset AKASH_GAS
-        akash tx deployment update ${{inputs.SDL_PATH}} --dseq ${{inputs.AKASH_DSEQ}} --from AKASH_GITHUB_RUNNER --keyring-backend test --node ${{inputs.AKASH_NODE}} -y
+        provider-services tx deployment update ${{inputs.SDL_PATH}} --dseq ${{inputs.AKASH_DSEQ}} --from AKASH_GITHUB_RUNNER --keyring-backend test --node ${{inputs.AKASH_NODE}} -y
     - name: Sleep before sending update
       shell: bash
       run: sleep 15s
